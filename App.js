@@ -1,47 +1,63 @@
 import { StatusBar } from "expo-status-bar";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import ResultsScreen from "./src/screens/ResultsScreen";
+import { Ionicons } from "@expo/vector-icons";
 
-const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === "Home") {
-              iconName = focused
-                ? "home"
-                : "home-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "settings" : "settings-outline";
-            } else if (route.name === "Results") {
-              iconName = focused ? "ios-list" : "ios-list";
-            }
- 
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: "tomato",
-          inactiveTintColor: "gray",
-        }}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-        <Tab.Screen name="Results" component={ResultsScreen} />
-      </Tab.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: "Home",
+            drawerIcon: ({ focused, size }) => (
+              <Ionicons
+                name="md-home"
+                size={size}
+                color={focused ? "tomato" : "#ccc"}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="setting"
+          component={SettingsScreen}
+          options={{
+            title: "Home",
+            drawerIcon: ({ focused, size }) => (
+              <Ionicons
+                name="md-home"
+                size={size}
+                color={focused ? "tomato" : "#ccc"}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="result"
+          component={ResultsScreen}
+          options={{
+            title: "Home",
+            drawerIcon: ({ focused, size }) => (
+              <Ionicons
+                name="md-home"
+                size={size}
+                color={focused ? "tomato" : "#ccc"}
+              />
+            ),
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
