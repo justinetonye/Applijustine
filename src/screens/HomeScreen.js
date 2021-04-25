@@ -16,12 +16,12 @@ export default function HomeScreen() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === "home") {
+          if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "settings") {
+          } else if (route.name === "Results") {
+            iconName = focused ? "ios-list" : "ios-list-outline";
+          } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
-          } else if (route.name === "results") {
-            iconName = focused ? "ios-list" : "ios-list";
           }
 
           // You can return any component that you like here!
@@ -29,13 +29,13 @@ export default function HomeScreen() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "tomato",
+        activeTintColor: "#4682B4",
         inactiveTintColor: "gray",
       }}
     >
-      <Tab.Screen name="home" component={Index} />
-      <Tab.Screen name="settings" component={SettingsScreen} />
-      <Tab.Screen name="results" component={ResultsScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Results" component={ResultsScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }
@@ -43,6 +43,6 @@ export default function HomeScreen() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fefeaa",
+    backgroundColor: "#4682B4",
   },
 });

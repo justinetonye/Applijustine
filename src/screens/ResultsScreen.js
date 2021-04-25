@@ -8,5 +8,7 @@ export default function ResultsScreen() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#4682B4",
+
   },
 });
