@@ -23,24 +23,25 @@ export default function App() {
               iconName = focused
                 ? "home"
                 : "home-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "settings" : "settings-outline";
             } else if (route.name === "Results") {
-              iconName = focused ? "ios-list" : "ios-list";
-            }
+              iconName = focused ? "ios-list" : "ios-list-outline";
+            }else if (route.name === "Settings") {
+              iconName = focused ? "settings" : "settings-outline";
+            } 
  
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
-          activeTintColor: "tomato",
+          activeTintColor: "#4682B4",
           inactiveTintColor: "gray",
         }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
         <Tab.Screen name="Results" component={ResultsScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+
       </Tab.Navigator>
     </NavigationContainer>
   );
